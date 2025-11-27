@@ -826,6 +826,23 @@ body {
   box-shadow: var(--shadow-soft);
   margin: 0 auto;
 }
+/* Contact Email Display Under Button */
+.contact-email-note {
+  margin-top: 0.9rem;
+  font-size: 0.85rem;
+  color: var(--muted);
+  text-align: left;
+}
+
+.contact-email-note a {
+  color: var(--accent);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.contact-email-note a:hover {
+  text-decoration: underline;
+}
 
 .form-row {
   display: flex;
