@@ -145,8 +145,9 @@ function initContactForm() {
     modal.classList.remove("visible");
   }
 
+  // ✅ Close ONLY via the button (no backdrop click to avoid flicker)
   if (modalClose) modalClose.addEventListener("click", closeModal);
-  if (modalBackdrop) modalBackdrop.addEventListener("click", closeModal);
+  // (Intentionally not adding click handler on modalBackdrop)
 
   form.addEventListener("submit", async (e) => {
     e.preventDefault(); // prevent redirect
