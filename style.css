@@ -380,11 +380,6 @@ body {
   background: rgba(255, 255, 255, 0.05);
 }
 
-.btn.secondary {
-  border-style: dashed;
-  border-color: rgba(255, 255, 255, 0.3);
-}
-
 /* Hero right */
 
 .hero-showcase {
@@ -860,28 +855,6 @@ textarea:focus {
   color: var(--muted);
 }
 
-.investor-cta {
-  margin-top: 0.4rem;
-  font-size: 0.86rem;
-  color: var(--muted);
-}
-
-.investor-cta a {
-  color: var(--accent);
-  font-weight: 600;
-  text-decoration: none;
-}
-
-.investor-cta a:hover {
-  text-decoration: underline;
-}
-
-.powered-by {
-  margin-top: 0.4rem;
-  font-size: 0.84rem;
-  color: var(--muted);
-}
-
 /* Eebii links with soft glow */
 
 .eebii-link {
@@ -912,7 +885,9 @@ textarea:focus {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
+  justify-content: center;
   gap: 0.5rem;
+  text-align: center;
 }
 
 .footer-powered {
