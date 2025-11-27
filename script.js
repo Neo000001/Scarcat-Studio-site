@@ -36,6 +36,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Mouse-follow glow
   initCursorGlow();
+
+  // Contact form + popup
+  initContactForm();
 });
 
 // Create floating particles in hero
@@ -113,5 +116,70 @@ function initCursorGlow() {
     glow.style.opacity = "1";
     glow.style.left = e.clientX + "px";
     glow.style.top = e.clientY + "px";
+  });
+}
+
+// Contact form (Formspree, no redirect, popup)
+function initContactForm() {
+  const form = document.getElementById("scarcatForm");
+  const modal = document.getElementById("formModal");
+  const modalTitle = document.getElementById("formModalTitle");
+  const modalMessage = document.getElementById("formModalMessage");
+  const modalClose = document.getElementById("formModalClose");
+  const modalBackdrop = document.getElementById("formModalBackdrop");
+
+  if (!form || !modal) return;
+
+  function openModal(title, message, success = true) {
+    modalTitle.textContent = title;
+    modalMessage.textContent = message;
+    if (success) {
+      modalTitle.style.color = "#ffc727";
+    } else {
+      modalTitle.style.color = "#ff6868";
+    }
+    modal.classList.add("visible");
+  }
+
+  function closeModal() {
+    modal.classList.remove("visible");
+  }
+
+  if (modalClose) modalClose.addEventListener("click", closeModal);
+  if (modalBackdrop) modalBackdrop.addEventListener("click", closeModal);
+
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault(); // prevent redirect
+
+    const data = new FormData(form);
+
+    try {
+      const response = await fetch(form.action, {
+        method: form.method,
+        body: data,
+        headers: { Accept: "application/json" },
+      });
+
+      if (response.ok) {
+        openModal(
+          "Message sent",
+          "Thank you for reaching out. The Scarcat Studio team will get back to you soon.",
+          true
+        );
+        form.reset();
+      } else {
+        openModal(
+          "Something went wrong",
+          "We couldn’t send your message right now. Please try again in a moment.",
+          false
+        );
+      }
+    } catch (err) {
+      openModal(
+        "Network error",
+        "Your connection seems unstable. Please check and try again.",
+        false
+      );
+    }
   });
 }
