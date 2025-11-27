@@ -4,20 +4,35 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Scarcat Studio – Immersive Games & Experiences</title>
+
+  <!-- AAA style font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;700&display=swap"
+    rel="stylesheet"
+  />
+
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <!-- Intro Splash Screen -->
   <div class="intro" id="intro">
     <div class="intro-inner">
+      <!-- Use your full logo here -->
       <div class="intro-logo-mark">
-        <img src="logo-mark.png" alt="Scarcat Studio Logo" />
+        <img src="logo-full.png" alt="Scarcat Studio Logo" />
       </div>
       <div class="intro-logo-text">Scarcat Studio</div>
       <p class="intro-tagline">
         Immersive games & interactive experiences for PC, VR & AR.
       </p>
     </div>
+  </div>
+
+  <!-- Mouse glow / particles live under everything -->
+  <div class="fx-layer">
+    <div id="cursorGlow"></div>
   </div>
 
   <!-- Main Page Wrapper -->
@@ -48,6 +63,11 @@
 
     <!-- Hero Section -->
     <section id="hero" class="hero">
+      <!-- Floating particles behind content -->
+      <div class="hero-fx">
+        <div class="hero-particles" id="heroParticles"></div>
+      </div>
+
       <div class="hero-content">
         <p class="hero-eyebrow">Immersive Game Studio</p>
         <h1 class="hero-title">
@@ -57,11 +77,19 @@
         <p class="hero-text">
           Scarcat Studio crafts story-driven games and interactive
           experiences that blend realistic physics, rich environments,
-          and next-generation technology.:contentReference[oaicite:0]{index=0}
+          and next-generation technology.
         </p>
         <div class="hero-actions">
           <a href="#game" class="btn primary">Explore The South Side</a>
           <a href="#contact" class="btn ghost">Start a project</a>
+          <a
+            href="SCARCAT STUDIO PITCH DECK2.pdf"
+            class="btn ghost secondary"
+            target="_blank"
+            rel="noopener"
+          >
+            Pitch / Funding PDF
+          </a>
         </div>
       </div>
       <div class="hero-showcase">
@@ -74,7 +102,8 @@
             Kerala-based game studio focused on immersive, story-driven worlds.
           </div>
           <div class="hero-card-note">
-            Built on research, simulation & cutting-edge tools.:contentReference[oaicite:1]{index=1}
+            Built on research, simulation and a deep love for interactive
+            storytelling.
           </div>
         </div>
       </div>
@@ -88,32 +117,30 @@
           <p>
             We build immersive RPG experiences that push the boundaries of
             interactive entertainment, from desktop to virtual and
-            augmented reality.:contentReference[oaicite:2]{index=2}
+            augmented reality.
           </p>
         </div>
         <div class="about-grid">
           <div class="about-card">
             <h3>Why we exist</h3>
             <p>
-              Most players still don’t get deeply engaging story experiences
-              that fully use modern tech. We’re here to change that with
-              worlds that feel alive and reactive.
+              Players deserve deeply engaging stories that fully use modern game
+              technology. We design worlds that feel alive, reactive and worth
+              returning to.
             </p>
           </div>
           <div class="about-card">
             <h3>Built in Kerala</h3>
             <p>
               Our studio grows local talent in design, programming and 3D art,
-              while delivering products for a global audience through
-              sales, licensing and partnerships.:contentReference[oaicite:3]{index=3}
+              and builds products crafted for a global audience.
             </p>
           </div>
           <div class="about-card">
             <h3>Research-driven</h3>
             <p>
-              We study market trends, simulate real-world behaviour and use
-              advanced motion-capture and in-house tools to create responsive,
-              realistic gameplay.:contentReference[oaicite:4]{index=4}
+              We study player behaviour, simulate real-world systems and use
+              robust tools to create responsive, believable gameplay.
             </p>
           </div>
         </div>
@@ -146,7 +173,7 @@
             <h3>VR & AR Experiences</h3>
             <p>
               High-impact experiences for entertainment, training and
-              interactive storytelling.:contentReference[oaicite:5]{index=5}
+              interactive storytelling.
             </p>
             <ul>
               <li>Virtual reality simulations</li>
@@ -168,8 +195,8 @@
           <article class="card">
             <h3>Custom Game Development</h3>
             <p>
-              Project-based development tailored to specific IPs,
-              industries and use-cases.:contentReference[oaicite:6]{index=6}
+              Project-based development tailored to specific IPs, industries and
+              use-cases.
             </p>
             <ul>
               <li>Serious games</li>
@@ -186,7 +213,7 @@
             <ul>
               <li>Optimised 3D workflows</li>
               <li>Modular vehicles & props</li>
-              <li>Dynamic, living worlds:contentReference[oaicite:7]{index=7}</li>
+              <li>Dynamic, living worlds</li>
             </ul>
           </article>
         </div>
@@ -199,8 +226,8 @@
         <div class="section-header">
           <h2>Flagship Game – The South Side</h2>
           <p>
-            An open-world, story-driven action-adventure set in the south of
-            India, with a strong focus on life and vehicle simulation.:contentReference[oaicite:8]{index=8}
+            A story-driven action adventure set in the south of India, with a
+            strong focus on life and vehicle simulation.
           </p>
         </div>
 
@@ -209,10 +236,10 @@
             <div class="game-panel">
               <h3>Game Overview</h3>
               <p>
-                The South Side explores the tension between military discipline
-                and everyday civilian life. Players move through dense
-                environments inspired by Kerala, combining narrative choices
-                with grounded, physics-based gameplay.:contentReference[oaicite:9]{index=9}
+                The South Side explores the tension between discipline and
+                everyday civilian life. Players move through dense environments
+                inspired by Kerala, combining narrative choices with grounded,
+                physics-based gameplay.
               </p>
             </div>
 
@@ -222,102 +249,66 @@
                 <ul>
                   <li>Optimised 3D pipeline and assets</li>
                   <li>Rich natural environments</li>
-                  <li>Modular, highly detailed vehicles:contentReference[oaicite:10]{index=10}</li>
+                  <li>Detailed vehicles and props</li>
                 </ul>
               </div>
               <div class="game-card">
                 <h4>Audience</h4>
                 <p>
                   Designed for both casual and dedicated players, balancing
-                  approachable controls with deep systems and replay value.:contentReference[oaicite:11]{index=11}
+                  approachable controls with depth and replay value.
                 </p>
               </div>
+            </div>
+
+            <!-- Game screenshots slider -->
+            <div class="game-gallery">
+              <h3>Game Screenshots</h3>
+              <div class="slider-window">
+                <div class="slider-track" id="gameSlider">
+                  <!-- Replace these image src paths with your actual screenshots -->
+                  <div class="slide">
+                    <img src="game-shot-1.jpg" alt="The South Side screenshot 1" />
+                    <div class="slide-label">Urban street – early build</div>
+                  </div>
+                  <div class="slide">
+                    <img src="game-shot-2.jpg" alt="The South Side screenshot 2" />
+                    <div class="slide-label">Vehicle & traffic simulation</div>
+                  </div>
+                  <div class="slide">
+                    <img src="game-shot-3.jpg" alt="The South Side screenshot 3" />
+                    <div class="slide-label">Night-time ambience</div>
+                  </div>
+                </div>
+              </div>
+              <div class="slider-controls">
+                <button class="slider-btn" type="button" data-slider="prev">‹</button>
+                <button class="slider-btn" type="button" data-slider="next">›</button>
+              </div>
+              <p class="slider-note">
+                Visuals shown are representative early look shots. Final game may vary.
+              </p>
             </div>
           </div>
 
           <div class="game-side">
             <div class="achievement-card">
-              <span class="badge">Achievement</span>
-              <h3>Six Wheel Phile – Early Success</h3>
+              <span class="badge">Early traction</span>
+              <h3>Community-driven test builds</h3>
               <p>
-                An earlier beta release reached tens of thousands of downloads
-                on a public file-sharing platform, with strong player feedback
-                and early community traction.:contentReference[oaicite:12]{index=12}
+                Previous test projects reached thousands of players and helped shape the
+                studio’s approach to physics, vehicles and open-world design.
               </p>
             </div>
 
             <div class="timeline-card">
-              <h4>Sample Production Timeline</h4>
+              <h4>Sample Production Approach</h4>
               <ul>
-                <li><strong>Month 1</strong> – Pre-production & tools</li>
-                <li><strong>Months 2–3</strong> – Core mechanics & levels</li>
-                <li><strong>Month 4</strong> – Alpha testing & polish</li>
-                <li><strong>Month 5</strong> – Launch & final QA:contentReference[oaicite:13]{index=13}</li>
+                <li><strong>Phase 1</strong> – Pre-production & tooling</li>
+                <li><strong>Phase 2</strong> – Core mechanics & world building</li>
+                <li><strong>Phase 3</strong> – Content, polish & optimisation</li>
+                <li><strong>Phase 4</strong> – QA, launch & live support</li>
               </ul>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Strategy Section -->
-    <section id="strategy" class="section">
-      <div class="section-inner">
-        <div class="section-header">
-          <h2>Monetization & Exposure Strategy</h2>
-          <p>
-            A mix of game sales, in-game value, and community-driven marketing.:contentReference[oaicite:14]{index=14}
-          </p>
-        </div>
-
-        <div class="strategy-grid">
-          <div class="strategy-column">
-            <h3>Monetization</h3>
-            <div class="strategy-card">
-              <h4>Game Sales</h4>
-              <p>
-                Premium editions available on digital platforms such as
-                Steam and similar storefronts.
-              </p>
-            </div>
-            <div class="strategy-card">
-              <h4>In-game Value</h4>
-              <p>
-                Optional purchases and edition upgrades that reward players
-                with meaningful in-game content.:contentReference[oaicite:15]{index=15}
-              </p>
-            </div>
-            <div class="strategy-card">
-              <h4>Integrated Ads</h4>
-              <p>
-                Contextual in-world placements, such as billboards, that
-                fit naturally inside the game spaces.
-              </p>
-            </div>
-          </div>
-
-          <div class="strategy-column">
-            <h3>Exposure</h3>
-            <div class="strategy-card">
-              <h4>Social Media</h4>
-              <p>
-                Consistent updates, devlogs and highlights on platforms
-                like Instagram and X, keeping the community close.:contentReference[oaicite:16]{index=16}
-              </p>
-            </div>
-            <div class="strategy-card">
-              <h4>Collaborations</h4>
-              <p>
-                Working with creators and gaming influencers to reach
-                broader audiences and strengthen trust.
-              </p>
-            </div>
-            <div class="strategy-card">
-              <h4>Events</h4>
-              <p>
-                Online and offline events, playtests and showcases to gather
-                feedback and grow an engaged player base.
-              </p>
             </div>
           </div>
         </div>
@@ -330,8 +321,8 @@
         <div class="section-header">
           <h2>Core Team</h2>
           <p>
-            A focused group of designers, programmers and technical artists
-            with experience in graphics, 3D and interactive media.:contentReference[oaicite:17]{index=17}
+            A focused group of designers, programmers and technical artists with
+            experience in graphics, 3D and interactive media.
           </p>
         </div>
         <div class="team-grid">
@@ -339,16 +330,16 @@
             <h3>Krishnadev VS</h3>
             <p class="role">Co-Founder & CEO</p>
             <p>
-              Background in animation and VFX, with experience in graphics
-              design and 3D modelling across multiple studios.:contentReference[oaicite:18]{index=18}
+              Animation and VFX background with hands-on experience in graphics
+              and 3D production.
             </p>
           </div>
           <div class="team-card">
             <h3>Ajith KS</h3>
             <p class="role">Co-Founder & CBO</p>
             <p>
-              Business and creative lead with experience guiding academic
-              and production teams in design-driven environments.:contentReference[oaicite:19]{index=19}
+              Business and creative lead with experience guiding academic and
+              production teams.
             </p>
           </div>
           <div class="team-card">
@@ -373,12 +364,12 @@
         <div class="section-header">
           <h2>Contact</h2>
           <p>
-            Share your idea, collaboration request or investment interest –
-            we’ll get back with a structured response and next steps.
+            Share your idea, collaboration request or investment interest – we’ll
+            get back with a structured response and next steps.
           </p>
         </div>
 
-        <!-- WORKING contact form using mailto -->
+        <!-- mailto contact form -->
         <form
           class="contact-form"
           action="mailto:contact@scarcatstudio.com"
@@ -412,11 +403,21 @@
           <button type="submit" class="btn primary">Send Message</button>
           <p class="form-note">
             This will open your email app and send a message to
-            <strong>contact@scarcatstudio.com</strong>.:contentReference[oaicite:20]{index=20}
+            <strong>contact@scarcatstudio.com</strong>.
+          </p>
+          <p class="investor-cta">
+            Investor or publisher?
+            <a
+              href="SCARCAT STUDIO PITCH DECK2.pdf"
+              target="_blank"
+              rel="noopener"
+            >
+              View pitch / funding deck (PDF)
+            </a>
           </p>
           <p class="powered-by">
             Powered by
-            <a href="https://eebii.com" target="_blank" rel="noopener">
+            <a href="https://eebii.com" target="_blank" rel="noopener" class="eebii-link">
               Eebii
             </a>
           </p>
@@ -429,7 +430,12 @@
       <div class="footer-inner">
         <span>© <span id="year"></span> Scarcat Studio</span>
         <span class="dot">•</span>
-        <span>Immersive games from Kerala to the world.</span>
+        <span class="footer-powered">
+          Powered by
+          <a href="https://eebii.com" target="_blank" rel="noopener" class="eebii-link">
+            Eebii
+          </a>
+        </span>
       </div>
     </footer>
   </div>
