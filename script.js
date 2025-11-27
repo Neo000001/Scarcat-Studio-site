@@ -65,33 +65,97 @@ function createHeroParticles() {
   }
 }
 
-// Game screenshots slider
+// Game screenshots slider – infinite loop
 function initGameSlider() {
   const track = document.getElementById("gameSlider");
   if (!track) return;
 
-  const slides = track.querySelectorAll(".slide");
-  if (!slides.length) return;
+  const originalSlides = Array.from(track.querySelectorAll(".slide"));
+  if (!originalSlides.length) return;
 
-  let index = 0;
+  // Clone first & last slide for seamless loop
+  const firstClone = originalSlides[0].cloneNode(true);
+  const lastClone = originalSlides[originalSlides.length - 1].cloneNode(true);
+  firstClone.dataset.clone = "first";
+  lastClone.dataset.clone = "last";
 
-  function setIndex(newIndex) {
-    index = (newIndex + slides.length) % slides.length;
+  track.appendChild(firstClone);
+  track.insertBefore(lastClone, originalSlides[0]);
+
+  const slides = Array.from(track.querySelectorAll(".slide"));
+
+  let index = 1; // start on first REAL slide
+  let allowMove = true;
+  let autoTimer = null;
+
+  function setTransition(enabled) {
+    track.style.transition = enabled ? "transform 0.6s ease-in-out" : "none";
+  }
+
+  function goToIndex(newIndex) {
+    index = newIndex;
+    setTransition(true);
     track.style.transform = `translateX(-${index * 100}%)`;
   }
 
+  // Initial position (no animation)
+  setTransition(false);
+  track.style.transform = `translateX(-${index * 100}%)`;
+
+  // Handle when we hit clones and need to snap back silently
+  track.addEventListener("transitionend", () => {
+    const current = slides[index];
+    if (!current) {
+      allowMove = true;
+      return;
+    }
+
+    if (current.dataset.clone === "first") {
+      // Moved from last REAL slide to firstClone -> snap to real first
+      setTransition(false);
+      index = 1;
+      track.style.transform = `translateX(-${index * 100}%)`;
+    } else if (current.dataset.clone === "last") {
+      // Moved from first REAL slide to lastClone -> snap to real last
+      setTransition(false);
+      index = originalSlides.length;
+      track.style.transform = `translateX(-${index * 100}%)`;
+    }
+
+    // Re-enable smooth transition for next moves
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => setTransition(true));
+    });
+
+    allowMove = true;
+  });
+
+  function nextSlide() {
+    if (!allowMove) return;
+    allowMove = false;
+    goToIndex(index + 1);
+  }
+
+  function prevSlide() {
+    if (!allowMove) return;
+    allowMove = false;
+    goToIndex(index - 1);
+  }
+
+  // Hook up buttons
   const prevBtn = document.querySelector("[data-slider='prev']");
   const nextBtn = document.querySelector("[data-slider='next']");
 
-  if (prevBtn) {
-    prevBtn.addEventListener("click", () => setIndex(index - 1));
-  }
-  if (nextBtn) {
-    nextBtn.addEventListener("click", () => setIndex(index + 1));
+  if (prevBtn) prevBtn.addEventListener("click", prevSlide);
+  if (nextBtn) nextBtn.addEventListener("click", nextSlide);
+
+  // Auto-play loop
+  function startAuto() {
+    if (autoTimer) clearInterval(autoTimer);
+    autoTimer = setInterval(nextSlide, 7000);
   }
 
-  // auto-rotate
-  setInterval(() => setIndex(index + 1), 7000);
+  startAuto();
 }
 
 // Mouse-follow light glow within hero
@@ -145,9 +209,9 @@ function initContactForm() {
     modal.classList.remove("visible");
   }
 
-  // ✅ Close ONLY via the button (no backdrop click to avoid flicker)
+  // Close ONLY via the button (no backdrop click to avoid flicker)
   if (modalClose) modalClose.addEventListener("click", closeModal);
-  // (Intentionally not adding click handler on modalBackdrop)
+  // intentionally not using modalBackdrop click
 
   form.addEventListener("submit", async (e) => {
     e.preventDefault(); // prevent redirect
