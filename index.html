@@ -213,8 +213,13 @@
       </div>
     </section>
 
-    <!-- Flagship Game Section -->
-    <section id="game" class="section section-alt">
+    <!-- Flagship Game Section with background video -->
+    <section id="game" class="section section-alt game-video-section">
+      <!-- background cinematic video -->
+      <video class="game-bg-video" autoplay loop muted playsinline>
+        <source src="southside-bg.mp4" type="video/mp4" />
+      </video>
+
       <div class="section-inner">
         <div class="section-header">
           <h2>Flagship Game – The South Side</h2>
@@ -259,18 +264,24 @@
               <h3>Game Screenshots</h3>
               <div class="slider-window">
                 <div class="slider-track" id="gameSlider">
-                  <!-- Replace these image src paths with your actual screenshots -->
                   <div class="slide">
-                    <img src="game-shot-1.jpg" alt="The South Side screenshot 1" />
-                    <div class="slide-label">Urban street – early build</div>
+                    <img src="southside-bus-1.jpg" alt="Tourist bus in forest road – South Side" />
+                    <div class="slide-label">Tourist bus on Kerala forest route</div>
                   </div>
+
                   <div class="slide">
-                    <img src="game-shot-2.jpg" alt="The South Side screenshot 2" />
-                    <div class="slide-label">Vehicle & traffic simulation</div>
+                    <img src="southside-bus-2.jpg" alt="Front angle of bus – South Side" />
+                    <div class="slide-label">Front angle – detailed bus model</div>
                   </div>
+
                   <div class="slide">
-                    <img src="game-shot-3.jpg" alt="The South Side screenshot 3" />
-                    <div class="slide-label">Night-time ambience</div>
+                    <img src="southside-truck-1.jpg" alt="Timber truck – South Side" />
+                    <div class="slide-label">Timber truck with painted body</div>
+                  </div>
+
+                  <div class="slide">
+                    <img src="southside-bus-close-1.jpg" alt="Bus bumper close-up – South Side" />
+                    <div class="slide-label">Close-up – motion shot on highway</div>
                   </div>
                 </div>
               </div>
@@ -357,47 +368,48 @@
         <div class="section-header">
           <h2>Contact</h2>
           <p>
-            Share your idea, collaboration request or investment interest – we’ll
-            get back with a structured response and next steps.
+            Share your idea or collaboration request — we’ll reply with clear
+            next steps.
           </p>
         </div>
 
-        <!-- mailto contact form -->
+        <!-- FORMSPREE FORM (no redirect) -->
         <form
           class="contact-form"
-          action="mailto:contact@scarcatstudio.com"
-          method="post"
-          enctype="text/plain"
+          action="https://formspree.io/f/mvgjrzaw"
+          method="POST"
+          id="scarcatForm"
         >
           <div class="form-row">
             <div class="form-field">
               <label for="name">Name</label>
-              <input id="name" name="Name" type="text" placeholder="Your name" required />
+              <input id="name" name="name" type="text" placeholder="Your name" required />
             </div>
             <div class="form-field">
               <label for="email">Email</label>
-              <input id="email" name="Email" type="email" placeholder="you@example.com" required />
+              <input id="email" name="email" type="email" placeholder="you@example.com" required />
             </div>
           </div>
+
           <div class="form-field">
             <label for="subject">Subject</label>
-            <input id="subject" name="Subject" type="text" placeholder="Project / enquiry" />
+            <input id="subject" name="subject" type="text" placeholder="Project / enquiry" />
           </div>
+
           <div class="form-field">
             <label for="message">Message</label>
             <textarea
               id="message"
-              name="Message"
+              name="message"
               rows="4"
               placeholder="Short brief about what you need..."
               required
             ></textarea>
           </div>
-          <button type="submit" class="btn primary">Send Message</button>
-          <p class="form-note">
-            This will open your email app and send a message to
-            <strong>contact@scarcatstudio.com</strong>.
-          </p>
+
+          <button type="submit" class="btn primary">
+            Send Message
+          </button>
         </form>
       </div>
     </section>
@@ -417,6 +429,20 @@
         </span>
       </div>
     </footer>
+  </div>
+
+  <!-- Success / Error Popup -->
+  <div class="form-modal" id="formModal">
+    <div class="form-modal-backdrop" id="formModalBackdrop"></div>
+    <div class="form-modal-dialog">
+      <h3 id="formModalTitle">Message sent</h3>
+      <p id="formModalMessage">
+        Thank you for reaching out. We’ll get back to you shortly.
+      </p>
+      <button type="button" class="btn modal-close-btn" id="formModalClose">
+        Close
+      </button>
+    </div>
   </div>
 
   <script src="script.js"></script>
