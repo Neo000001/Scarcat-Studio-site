@@ -87,7 +87,7 @@ body {
   animation: introPop 1.3s ease-out forwards;
 }
 
-/* SMALL, CLEAN INTRO LOGO  */
+/* Logo in intro */
 .intro-logo-mark {
   width: 260px;
   height: auto;
@@ -762,7 +762,7 @@ body {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  opacity: 0.45; /* adjust strength here */
+  opacity: 0.45; /* you asked for 0.45 */
   filter: brightness(0.58) saturate(0.95) blur(1.4px);
   z-index: -1;
 }
@@ -826,23 +826,6 @@ body {
   box-shadow: var(--shadow-soft);
   margin: 0 auto;
 }
-/* Contact Email Display Under Button */
-.contact-email-note {
-  margin-top: 0.9rem;
-  font-size: 0.85rem;
-  color: var(--muted);
-  text-align: left;
-}
-
-.contact-email-note a {
-  color: var(--accent);
-  text-decoration: none;
-  font-weight: 500;
-}
-
-.contact-email-note a:hover {
-  text-decoration: underline;
-}
 
 .form-row {
   display: flex;
@@ -889,6 +872,57 @@ textarea:focus {
   border-color: var(--accent);
   box-shadow: 0 0 0 1px var(--accent-soft);
   background: rgba(4, 4, 22, 0.98);
+}
+
+/* Contact email line under button */
+.contact-email-note {
+  margin-top: 1rem;
+  font-size: 0.85rem;
+  color: var(--muted);
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.contact-email-note::before {
+  content: "✉";
+  font-size: 0.9rem;
+  color: var(--accent);
+  text-shadow: 0 0 10px rgba(255, 199, 39, 0.6);
+}
+
+.contact-email-label {
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+
+.contact-email-note a {
+  color: var(--accent);
+  text-decoration: none;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  position: relative;
+}
+
+.contact-email-note a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  width: 0;
+  height: 1px;
+  background: linear-gradient(90deg, var(--accent), #fffbe0);
+  transition: width 0.25s ease-out;
+  opacity: 0.9;
+}
+
+.contact-email-note a:hover {
+  text-shadow: 0 0 10px rgba(255, 199, 39, 0.9);
+}
+
+.contact-email-note a:hover::after {
+  width: 100%;
 }
 
 /* Contact form modal popup */
@@ -1054,17 +1088,44 @@ footer {
   }
 }
 
-/* Responsive */
+/* ===============================
+   📱 MOBILE + TABLET RESPONSIVE
+   =============================== */
 
 @media (max-width: 900px) {
+
+  .section-inner {
+    padding-left: 1.2rem;
+    padding-right: 1.2rem;
+  }
+
   .hero {
     grid-template-columns: minmax(0, 1fr);
     padding-top: 7rem;
+    gap: 2.2rem;
   }
 
   .hero-showcase {
     order: -1;
-    min-height: 220px;
+    min-height: 230px;
+  }
+
+  .hero-title {
+    font-size: 2rem;
+    line-height: 2.4rem;
+    text-align: center;
+  }
+
+  .hero-text {
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .hero-actions {
+    flex-direction: column;
+    align-items: center;
+    margin-top: 1.4rem;
   }
 
   .header-inner {
@@ -1092,11 +1153,68 @@ footer {
   .game-gallery .slide {
     height: 220px;
   }
+
+  .slider-window {
+    height: 220px;
+  }
+
+  .slide img {
+    height: 220px;
+    object-fit: cover;
+  }
+
+  .game-video-section .section-inner {
+    backdrop-filter: none;
+    background: linear-gradient(
+      180deg,
+      rgba(4, 4, 11, 0.96),
+      rgba(4, 4, 20, 0.98)
+    );
+    border-radius: 1.5rem;
+  }
+
+  .game-bg-video {
+    opacity: 0.32;
+    filter: brightness(0.65) saturate(0.9) blur(2px);
+  }
+
+  .contact-form {
+    width: 100%;
+    padding: 1.4rem;
+  }
+
+  .form-row {
+    flex-direction: column;
+    gap: 0.9rem;
+  }
+
+  input,
+  textarea {
+    font-size: 15px;
+    padding: 0.9rem;
+  }
+
+  .contact-email-note {
+    text-align: center;
+    justify-content: center;
+  }
+
+  .footer-inner {
+    flex-direction: column;
+    gap: 6px;
+    text-align: center;
+  }
 }
 
-@media (max-width: 600px) {
+@media (max-width: 580px) {
+
   .hero {
     padding-top: 6.5rem;
+  }
+
+  .hero-title {
+    font-size: 1.7rem;
+    line-height: 2.1rem;
   }
 
   .intro-inner {
@@ -1113,5 +1231,11 @@ footer {
 
   .contact-form {
     padding-inline: 1.2rem;
+  }
+
+  .slide,
+  .slider-window,
+  .slide img {
+    height: 200px;
   }
 }
