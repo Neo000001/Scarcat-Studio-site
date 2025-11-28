@@ -756,13 +756,18 @@ body {
   overflow: hidden;
 }
 
+/* remove purple gradient so video is fully visible */
+.game-video-section.section-alt {
+  background: transparent;
+}
+
 .game-bg-video {
   position: absolute;
   inset: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
-  opacity: 0.45; /* you asked for 0.45 */
+  opacity: 0.45;
   filter: brightness(0.58) saturate(0.95) blur(1.4px);
   z-index: -1;
 }
@@ -824,7 +829,7 @@ body {
   );
   border: 1px solid rgba(255, 255, 255, 0.12);
   box-shadow: var(--shadow-soft);
-  margin: 0 auto;
+  margin: 0 auto 1.6rem;
 }
 
 .form-row {
@@ -1101,7 +1106,7 @@ footer {
 
   .hero {
     grid-template-columns: minmax(0, 1fr);
-    padding-top: 7rem;
+    padding-top: 8.2rem; /* more space under header */
     gap: 2.2rem;
   }
 
@@ -1164,6 +1169,7 @@ footer {
   }
 
   /* Flagship game video – mobile tuning */
+
   .game-video-section {
     padding-top: 2.4rem;
     padding-bottom: 2.6rem;
@@ -1178,6 +1184,15 @@ footer {
   .game-bg-video {
     opacity: 0.45;
     filter: brightness(0.58) saturate(0.95) blur(1.4px);
+  }
+
+  /* Make cards slightly lighter & glassy so video is visible */
+  .game-video-section .game-panel,
+  .game-video-section .game-card,
+  .game-video-section .achievement-card,
+  .game-video-section .timeline-card {
+    background: rgba(4, 4, 20, 0.88);
+    backdrop-filter: blur(3px);
   }
 
   .contact-form {
@@ -1211,7 +1226,7 @@ footer {
 @media (max-width: 580px) {
 
   .hero {
-    padding-top: 6.5rem;
+    padding-top: 7.2rem; /* extra space on very small phones */
   }
 
   .hero-title {
