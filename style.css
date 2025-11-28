@@ -1239,3 +1239,21 @@ footer {
     height: 200px;
   }
 }
+
+/* =========================================================
+   EXTRA MOBILE TUNING FOR FLAGSHIP GAME VIDEO (NO DESKTOP CHANGE)
+   ========================================================= */
+@media (max-width: 768px) {
+
+  /* Let the video show more, reduce solid box feeling */
+  .game-video-section .section-inner {
+    background: transparent;
+    backdrop-filter: none;
+    border-radius: 0;
+  }
+
+  .game-bg-video {
+    opacity: 0.45; /* stronger video presence */
+    filter: brightness(0.7) saturate(1) blur(1.2px);
+  }
+}
