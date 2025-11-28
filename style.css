@@ -1163,19 +1163,21 @@ footer {
     object-fit: cover;
   }
 
+  /* Flagship game video – mobile tuning */
+  .game-video-section {
+    padding-top: 2.4rem;
+    padding-bottom: 2.6rem;
+  }
+
   .game-video-section .section-inner {
     backdrop-filter: none;
-    background: linear-gradient(
-      180deg,
-      rgba(4, 4, 11, 0.96),
-      rgba(4, 4, 20, 0.98)
-    );
+    background: transparent;
     border-radius: 1.5rem;
   }
 
   .game-bg-video {
-    opacity: 0.32;
-    filter: brightness(0.65) saturate(0.9) blur(2px);
+    opacity: 0.45;
+    filter: brightness(0.58) saturate(0.95) blur(1.4px);
   }
 
   .contact-form {
@@ -1238,22 +1240,10 @@ footer {
   .slide img {
     height: 200px;
   }
-}
 
-/* =========================================================
-   EXTRA MOBILE TUNING FOR FLAGSHIP GAME VIDEO (NO DESKTOP CHANGE)
-   ========================================================= */
-@media (max-width: 768px) {
-
-  /* Let the video show more, reduce solid box feeling */
-  .game-video-section .section-inner {
-    background: transparent;
-    backdrop-filter: none;
-    border-radius: 0;
-  }
-
-  .game-bg-video {
-    opacity: 0.45; /* stronger video presence */
-    filter: brightness(0.7) saturate(1) blur(1.2px);
+  /* Slightly tighter flagship section on very small screens */
+  .game-video-section {
+    padding-top: 2rem;
+    padding-bottom: 2.2rem;
   }
 }
