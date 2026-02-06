@@ -984,22 +984,6 @@ textarea:focus {
   width: 100%;
   justify-content: center;
 }
-
-/* Eebii links with soft glow */
-
-.eebii-link {
-  color: var(--accent);
-  text-decoration: none;
-  font-weight: 600;
-  position: relative;
-  animation: eebiiGlow 2.8s ease-in-out infinite;
-}
-
-.eebii-link:hover {
-  text-decoration: underline;
-  animation-play-state: paused;
-}
-
 /* Footer */
 
 .footer {
@@ -1080,16 +1064,6 @@ footer {
   100% {
     transform: translateY(-40px);
     opacity: 0;
-  }
-}
-
-@keyframes eebiiGlow {
-  0%,
-  100% {
-    text-shadow: 0 0 0 rgba(255, 199, 39, 0);
-  }
-  50% {
-    text-shadow: 0 0 12px rgba(255, 199, 39, 0.7);
   }
 }
 
@@ -1260,5 +1234,55 @@ footer {
   .game-video-section {
     padding-top: 2rem;
     padding-bottom: 2.2rem;
+  }
+}
+/* ===============================
+   🔹 EEBII – Animated Brand Style
+   =============================== */
+
+.eebii-brand {
+  margin-left: 5px;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.eebii-brand:hover {
+  transform: translateY(-2px);
+  filter: drop-shadow(0 0 6px rgba(56, 189, 248, 0.7));
+}
+
+.eebii-brand span {
+  /* Liquid / water gradient */
+  background: linear-gradient(
+    to right,
+    #38bdf8,
+    #2563eb,
+    #0ea5e9,
+    #2563eb,
+    #38bdf8
+  );
+  background-size: 200% auto;
+
+  /* Text-only gradient */
+  color: transparent;
+  -webkit-background-clip: text;
+  background-clip: text;
+
+  /* Flow animation */
+  animation: eebiiShine 3s linear infinite;
+
+  /* Depth */
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.35));
+  font-weight: 800;
+  letter-spacing: 0.04em;
+}
+
+/* Animation */
+@keyframes eebiiShine {
+  to {
+    background-position: 200% center;
   }
 }
