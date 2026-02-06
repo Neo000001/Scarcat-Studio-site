@@ -1237,25 +1237,29 @@ footer {
   }
 }
 /* ===============================
-   🔹 EEBII – Animated Brand Style
+   🔹 EEBII BRAND – FINAL OVERRIDE
    =============================== */
 
+/* kill browser underline & old styles */
+.footer a,
+.footer a:hover {
+  text-decoration: none !important;
+}
+
+/* Eebii animated brand */
 .eebii-brand {
   margin-left: 5px;
-  text-decoration: none;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  transition: transform 0.3s ease, filter 0.3s ease;
+  text-decoration: none !important;
 }
 
 .eebii-brand:hover {
-  transform: translateY(-2px);
-  filter: drop-shadow(0 0 6px rgba(56, 189, 248, 0.7));
+  text-decoration: none !important;
 }
 
 .eebii-brand span {
-  /* Liquid / water gradient */
   background: linear-gradient(
     to right,
     #38bdf8,
@@ -1266,21 +1270,18 @@ footer {
   );
   background-size: 200% auto;
 
-  /* Text-only gradient */
-  color: transparent;
+  color: transparent !important;
   -webkit-background-clip: text;
   background-clip: text;
 
-  /* Flow animation */
   animation: eebiiShine 3s linear infinite;
-
-  /* Depth */
-  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.35));
   font-weight: 800;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.05em;
+
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.35));
 }
 
-/* Animation */
+/* animation */
 @keyframes eebiiShine {
   to {
     background-position: 200% center;
