@@ -1,9 +1,3 @@
-/* FIX: prevent modal from inheriting transforms */
-.form-modal,
-.form-modal * {
-  animation: none !important;
-  transform: none !important;
-}
 :root {
   --bg: #04040b;
   --bg-alt: #08081a;
@@ -941,7 +935,7 @@ textarea:focus {
 .form-modal {
   position: fixed;
   inset: 0;
-  z-index: 900;
+  z-index: 10000;      /* ✅ raised */
   display: none;
 }
 
@@ -957,7 +951,7 @@ textarea:focus {
 }
 
 .form-modal-dialog {
-  position: absolute;
+  position: fixed;     /* ✅ KEY FIX */
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
@@ -990,6 +984,8 @@ textarea:focus {
   width: 100%;
   justify-content: center;
 }
+
+
 /* Footer */
 
 .footer {
