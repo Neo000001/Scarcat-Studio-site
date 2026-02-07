@@ -1452,3 +1452,32 @@ footer {
     text-align: center;
   }
 }
+/* =====================================
+   FORM MODAL – GLOBAL FIX (DESKTOP + MOBILE)
+   ===================================== */
+
+.form-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 10000;
+}
+
+.form-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+}
+
+.form-modal-dialog {
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 10000;
+}
+
+/* Remove transform stacking ONLY when modal is visible */
+.form-modal.visible ~ .page-wrapper {
+  transform: none !important;
+  filter: none !important;
+}
