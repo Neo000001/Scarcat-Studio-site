@@ -1,3 +1,9 @@
+/* FIX: prevent modal from inheriting transforms */
+.form-modal,
+.form-modal * {
+  animation: none !important;
+  transform: none !important;
+}
 :root {
   --bg: #04040b;
   --bg-alt: #08081a;
