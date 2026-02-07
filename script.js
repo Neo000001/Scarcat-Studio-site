@@ -1,4 +1,6 @@
-// Intro splash + show main page
+/* ======================================================
+   Intro splash + show main page
+   ====================================================== */
 window.addEventListener("load", () => {
   const intro = document.getElementById("intro");
   const page = document.querySelector(".page-wrapper");
@@ -9,7 +11,9 @@ window.addEventListener("load", () => {
   }, 1800);
 });
 
-// Header scroll behavior
+/* ======================================================
+   Header scroll behavior
+   ====================================================== */
 const header = document.getElementById("mainHeader");
 
 window.addEventListener("scroll", () => {
@@ -21,27 +25,24 @@ window.addEventListener("scroll", () => {
   }
 });
 
+/* ======================================================
+   DOM Ready
+   ====================================================== */
 document.addEventListener("DOMContentLoaded", () => {
   // Footer year
   const yearSpan = document.getElementById("year");
-  if (yearSpan) {
-    yearSpan.textContent = new Date().getFullYear();
-  }
+  if (yearSpan) yearSpan.textContent = new Date().getFullYear();
 
-  // Hero particles
+  // Init features
   createHeroParticles();
-
-  // Slider
   initGameSlider();
-
-  // Mouse-follow glow
   initCursorGlow();
-
-  // Contact form + popup
   initContactForm();
 });
 
-// Create floating particles in hero
+/* ======================================================
+   Hero floating particles
+   ====================================================== */
 function createHeroParticles() {
   const container = document.getElementById("heroParticles");
   if (!container) return;
@@ -50,6 +51,7 @@ function createHeroParticles() {
   for (let i = 0; i < count; i++) {
     const p = document.createElement("span");
     p.className = "particle";
+
     const size = 3 + Math.random() * 5;
     p.style.width = size + "px";
     p.style.height = size + "px";
@@ -65,7 +67,9 @@ function createHeroParticles() {
   }
 }
 
-// Game screenshots slider – infinite loop
+/* ======================================================
+   Game screenshots slider (infinite loop)
+   ====================================================== */
 function initGameSlider() {
   const track = document.getElementById("gameSlider");
   if (!track) return;
@@ -73,7 +77,7 @@ function initGameSlider() {
   const originalSlides = Array.from(track.querySelectorAll(".slide"));
   if (!originalSlides.length) return;
 
-  // Clone first & last slide for seamless loop
+  // Clone first & last slide
   const firstClone = originalSlides[0].cloneNode(true);
   const lastClone = originalSlides[originalSlides.length - 1].cloneNode(true);
   firstClone.dataset.clone = "first";
@@ -84,7 +88,7 @@ function initGameSlider() {
 
   const slides = Array.from(track.querySelectorAll(".slide"));
 
-  let index = 1; // start on first REAL slide
+  let index = 1;
   let allowMove = true;
   let autoTimer = null;
 
@@ -98,11 +102,10 @@ function initGameSlider() {
     track.style.transform = `translateX(-${index * 100}%)`;
   }
 
-  // Initial position (no animation)
+  // Initial position
   setTransition(false);
   track.style.transform = `translateX(-${index * 100}%)`;
 
-  // Handle when we hit clones and need to snap back silently
   track.addEventListener("transitionend", () => {
     const current = slides[index];
     if (!current) {
@@ -111,18 +114,15 @@ function initGameSlider() {
     }
 
     if (current.dataset.clone === "first") {
-      // Moved from last REAL slide to firstClone -> snap to real first
       setTransition(false);
       index = 1;
       track.style.transform = `translateX(-${index * 100}%)`;
     } else if (current.dataset.clone === "last") {
-      // Moved from first REAL slide to lastClone -> snap to real last
       setTransition(false);
       index = originalSlides.length;
       track.style.transform = `translateX(-${index * 100}%)`;
     }
 
-    // Re-enable smooth transition for next moves
     requestAnimationFrame(() => {
       requestAnimationFrame(() => setTransition(true));
     });
@@ -142,14 +142,12 @@ function initGameSlider() {
     goToIndex(index - 1);
   }
 
-  // Hook up buttons
   const prevBtn = document.querySelector("[data-slider='prev']");
   const nextBtn = document.querySelector("[data-slider='next']");
 
   if (prevBtn) prevBtn.addEventListener("click", prevSlide);
   if (nextBtn) nextBtn.addEventListener("click", nextSlide);
 
-  // Auto-play loop
   function startAuto() {
     if (autoTimer) clearInterval(autoTimer);
     autoTimer = setInterval(nextSlide, 7000);
@@ -158,7 +156,9 @@ function initGameSlider() {
   startAuto();
 }
 
-// Mouse-follow light glow within hero
+/* ======================================================
+   Mouse-follow glow in hero
+   ====================================================== */
 function initCursorGlow() {
   const glow = document.getElementById("cursorGlow");
   const hero = document.querySelector(".hero");
@@ -166,13 +166,13 @@ function initCursorGlow() {
 
   document.addEventListener("mousemove", (e) => {
     const rect = hero.getBoundingClientRect();
-    const insideHero =
+    const inside =
       e.clientX >= rect.left &&
       e.clientX <= rect.right &&
       e.clientY >= rect.top &&
       e.clientY <= rect.bottom;
 
-    if (!insideHero) {
+    if (!inside) {
       glow.style.opacity = "0";
       return;
     }
@@ -183,38 +183,48 @@ function initCursorGlow() {
   });
 }
 
-// Contact form (Formspree, no redirect, popup)
+/* ======================================================
+   Contact form + popup (FINAL FIXED VERSION)
+   ====================================================== */
 function initContactForm() {
   const form = document.getElementById("scarcatForm");
   const modal = document.getElementById("formModal");
   const modalTitle = document.getElementById("formModalTitle");
   const modalMessage = document.getElementById("formModalMessage");
   const modalClose = document.getElementById("formModalClose");
-  const modalBackdrop = document.getElementById("formModalBackdrop");
 
   if (!form || !modal) return;
+
+  let scrollY = 0;
 
   function openModal(title, message, success = true) {
     modalTitle.textContent = title;
     modalMessage.textContent = message;
-    if (success) {
-      modalTitle.style.color = "#ffc727";
-    } else {
-      modalTitle.style.color = "#ff6868";
-    }
+    modalTitle.style.color = success ? "#ffc727" : "#ff6868";
+
+    // 🔒 lock scroll position
+    scrollY = window.scrollY;
+    document.body.style.position = "fixed";
+    document.body.style.top = `-${scrollY}px`;
+    document.body.style.width = "100%";
+
     modal.classList.add("visible");
   }
 
   function closeModal() {
     modal.classList.remove("visible");
+
+    // 🔓 restore scroll
+    document.body.style.position = "";
+    document.body.style.top = "";
+    document.body.style.width = "";
+    window.scrollTo(0, scrollY);
   }
 
-  // Close ONLY via the button (no backdrop click to avoid flicker)
   if (modalClose) modalClose.addEventListener("click", closeModal);
-  // intentionally not using modalBackdrop click
 
   form.addEventListener("submit", async (e) => {
-    e.preventDefault(); // prevent redirect
+    e.preventDefault();
 
     const data = new FormData(form);
 
