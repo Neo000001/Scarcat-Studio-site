@@ -1270,45 +1270,56 @@ footer {
 
 
 /* =========================
-   EEBII BRAND ANIMATION
+   EEBII – LIQUID GLASS BRAND
    ========================= */
 
 .eebii-brand {
-  margin-left: 5px;
+  margin-left: 6px;
   text-decoration: none;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  transition: all 0.3s ease;
+  transition: transform 0.3s ease;
 }
 
 .eebii-brand:hover {
   transform: translateY(-2px);
-  filter: drop-shadow(0 0 5px rgba(56, 189, 248, 0.6));
 }
 
 .eebii-brand span {
+  /* Liquid glass gradient – screenshot match */
   background: linear-gradient(
-    to right,
-    #38bdf8,
-    #2563eb,
-    #0ea5e9,
-    #2563eb,
-    #38bdf8
+    120deg,
+    #e6f6ff,
+    #8ad8ff,
+    #3b82f6,
+    #8ad8ff,
+    #e6f6ff
   );
-  background-size: 200% auto;
+  background-size: 300% 300%;
+
+  /* Text mask */
   color: transparent;
   -webkit-background-clip: text;
   background-clip: text;
-  animation: eebiiShine 3s linear infinite;
+
+  /* Smooth liquid animation */
+  animation: eebii-liquid 4.8s ease-in-out infinite;
+
+  /* Premium glass depth */
   font-weight: 800;
+  letter-spacing: 0.05em;
+
+  /* Soft shadow (NOT neon glow) */
+  filter: drop-shadow(0 2px 6px rgba(120, 190, 255, 0.35));
 }
 
-@keyframes eebiiShine {
-  to {
-    background-position: 200% center;
-  }
+@keyframes eebii-liquid {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
 }
+
 
 
 /* =========================
