@@ -985,19 +985,16 @@ textarea:focus {
   justify-content: center;
 }
 
-/* Eebii links with soft glow */
-
+/* Eebii link – base (NO glow animation) */
 .eebii-link {
   color: var(--accent);
   text-decoration: none;
   font-weight: 600;
   position: relative;
-  animation: eebiiGlow 2.8s ease-in-out infinite;
 }
 
 .eebii-link:hover {
   text-decoration: underline;
-  animation-play-state: paused;
 }
 
 /* Footer */
@@ -1083,15 +1080,6 @@ footer {
   }
 }
 
-@keyframes eebiiGlow {
-  0%,
-  100% {
-    text-shadow: 0 0 0 rgba(255, 199, 39, 0);
-  }
-  50% {
-    text-shadow: 0 0 12px rgba(255, 199, 39, 0.7);
-  }
-}
 
 /* ===============================
    📱 MOBILE + TABLET RESPONSIVE
@@ -1261,4 +1249,41 @@ footer {
     padding-top: 2rem;
     padding-bottom: 2.2rem;
   }
+}
+/* =====================================================
+   EEBII – LIQUID GLASS FINAL OVERRIDE
+   ===================================================== */
+
+.footer .eebii-link {
+  background: linear-gradient(
+    120deg,
+    #e6f6ff,
+    #8ad8ff,
+    #3b82f6,
+    #8ad8ff,
+    #e6f6ff
+  );
+  background-size: 300% 300%;
+
+  color: transparent;
+  -webkit-background-clip: text;
+  background-clip: text;
+
+  animation: eebii-liquid 4.8s ease-in-out infinite;
+
+  font-weight: 800;
+  letter-spacing: 0.05em;
+
+  filter: drop-shadow(0 2px 6px rgba(120, 190, 255, 0.35));
+  text-shadow: none;
+}
+
+.footer .eebii-link:hover {
+  filter: drop-shadow(0 3px 10px rgba(120, 190, 255, 0.5));
+}
+
+@keyframes eebii-liquid {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
 }
